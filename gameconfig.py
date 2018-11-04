@@ -1,0 +1,19 @@
+VERSION = "1.0"
+
+INPUT_SENSEHAT = 0
+INPUT_KEYBOARD = 1
+
+# Game configurations
+GAMESPEED = 240
+FULLSCREEN = True
+SCREEN_W = 640
+SCREEN_H = 480
+CENTER_X = SCREEN_W // 2
+CENTER_Y = SCREEN_H // 2
+
+INPUT_CONTROLLER = INPUT_KEYBOARD
+SOUND = True
+MUSIC = True
+
+# Set to 'True' to make the player invincible
+GODMODE = False
