@@ -2,11 +2,11 @@
 SPYShip is an open source classic retro arcade space shooter game written in Python 3.
 
 ## System Requirements
-Python 3.5.3 or later
+Python 3.5.3 or later  
 Pygame 1.9.3 or later
 
-Sense HAT support is optional.
-For more details on Sense HAT visit:
+Sense HAT support is optional.  
+For more details on Sense HAT visit:  
 https://www.raspberrypi.org/products/sense-hat/
 
 NOTE: "Sense HAT" python module is needed to support Sense HAT.
