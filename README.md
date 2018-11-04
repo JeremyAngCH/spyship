@@ -1,4 +1,4 @@
-![Alt text](res/img/title.png?raw=true "SPYShip")
+![Alt text](res/img/title.png?raw=true "SPYShip")  
 SPYShip is an open source classic retro arcade space shooter game written in Python 3.
 
 ## System Requirements
@@ -27,16 +27,16 @@ INPUT_CONTROLLER = INPUT_SENSEHAT
 ## How To Play
 Keyboard as game input controller:
 
-Move Up      - 'W' or UP arrow key
-Move DOwn    - 'S' or DOWN arrow key
-Move Left    - 'A' or LEFT arrow key
-Move Right   - 'D' or RIGHT Arrow key
-Select/Shoot - SPACEBAR or ENTER
+Move Up      - 'W' or UP arrow key  
+Move DOwn    - 'S' or DOWN arrow key  
+Move Left    - 'A' or LEFT arrow key  
+Move Right   - 'D' or RIGHT Arrow key  
+Select/Shoot - SPACEBAR or ENTER  
 
 Sense HAT as game input controller:
 
-Tilt the Sense HAT to move the spaceship up, down, left or right
-Press the five-button joystick to select/shoot.
+Tilt the Sense HAT to move the spaceship up, down, left or right.  
+Press the five-button joystick to select/shoot.  
 Push the five-button joystick up or down to change selection in main menu.
 
 NOTE: Just press the 'shoot' button once to start shooting. Press the same button again to stop shooting.

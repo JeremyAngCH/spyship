@@ -17,5 +17,5 @@ This open source game project uses these sounds/music from freesound:
 * hit.wav          - (audio name: 8-bit laser)              by  Prof.Mudkip                 https://freesound.org/people/Prof.Mudkip/
 * bgmusicloop.wav  - (audio name: Arcade Music Loop.wav)    by  joshuaempyre                https://freesound.org/people/joshuaempyre/
 
-All the sounds/music above were edited for this game project by using Audacity(c) a free, open source and cross-platform audio editing software.
+All the sounds/music above were edited for this game project by using Audacity(c) a free, open source and cross-platform audio editing software.  
 Audacity(c) Official website: https://www.audacityteam.org/
