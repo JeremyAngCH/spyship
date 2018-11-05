@@ -42,7 +42,7 @@ Push the five-button joystick up or down to change selection in main menu.
 NOTE: Just press the 'shoot' button once to start shooting. Press the same button again to stop shooting.
 
 ## Documentation/Media
-Check out the project's wiki pages.
+Check out this project's [wiki](https://github.com/JeremyAngCH/spyship/wiki) pages.
 
 ## Credits
 See the [CREDITS.md](CREDITS.md) file for details.
