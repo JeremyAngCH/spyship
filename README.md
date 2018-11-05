@@ -19,7 +19,7 @@ NOTE: "Sense HAT" python module is needed to support Sense HAT.
 python main.py
 ```
 
-To use Sense HAT as game input controller on Raspberry Pi 3, change the following line in gameconfig.py:
+To use Sense HAT as game input controller on Raspberry Pi 3, change the following line in [gameconfig.py](gameconfig.py):
 ```
 INPUT_CONTROLLER = INPUT_SENSEHAT
 ```
