@@ -25,10 +25,15 @@ INPUT_CONTROLLER = INPUT_SENSEHAT
 ```
 
 ## How To Play
+Gamepad as game input controller:
+
+Move Up/Down/Left/Right     - Directional pad or left analog stick  
+Select/Shoot                - 'A' / 'X' or left analog stick button
+
 Keyboard as game input controller:
 
 Move Up      - 'W' or UP arrow key  
-Move DOwn    - 'S' or DOWN arrow key  
+Move Down    - 'S' or DOWN arrow key  
 Move Left    - 'A' or LEFT arrow key  
 Move Right   - 'D' or RIGHT Arrow key  
 Select/Shoot - SPACEBAR or ENTER  
