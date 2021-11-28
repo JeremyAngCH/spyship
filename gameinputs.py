@@ -1,3 +1,4 @@
+import pygame
 import os
 from pygame.locals import *
 import gameconfig as gConf
@@ -13,6 +14,10 @@ LR_DEGREE_ORIGIN = 0
 UD_DEGREE_ORIGIN = 20
 DEGREE_MAX = 20.0
 
+# Gamepad anlog stick threshold
+GAMEPAD_ANALOG_THRESHOLD = 0.1
+gamepad = None
+
 sense = None
 try:
     if gConf.INPUT_CONTROLLER == gConf.INPUT_SENSEHAT:
@@ -24,7 +29,17 @@ except Exception as exc:
 # 'l' = LEFT, 'r' = RIGHT, 'u' = UP, 'd' = DOWN, 'b' = SELECT/SHOOT
 # Direction inputs have magnitude ranging from 0 to 1.0
 inputs = {'l': 0.0, 'r': 0.0, 'u': 0.0, 'd': 0.0, 'b': False}
+input_index = ['l', 'r', 'u', 'd']
 wasButtonHit = False
+
+
+def detectGamePad():
+    global gamepad
+
+    if pygame.joystick.get_count() >= 1:
+        gConf.INPUT_CONTROLLER = gConf.INPUT_GAMEPAD
+        gamepad = pygame.joystick.Joystick(0)
+        gamepad.init()
 
 
 def resetInputDirections():
@@ -95,6 +110,45 @@ def mapKeys(keys):
         inputs['d'] = 1.0
 
     inputs['b'] = True if keys[K_SPACE] or keys[K_RETURN] else False
+
+
+def getGamepadInputs():
+    global gamepad, input_index
+
+    analog_used = False
+
+    resetInputDirections()
+    # Check for buttons pressed
+    for button_index in range(gamepad.get_numbuttons()):
+        button_pushed = gamepad.get_button(button_index)
+        # If 'X' button or right analog stick is pressed
+        if button_index == 1 or (button_index == 11 and not inputs['b']):
+            inputs['b'] = True if button_pushed else False
+        # If 'BACK' button is pressed
+        elif button_pushed and button_index == 8:
+            return True
+
+    # Check left analog stick
+    for axis_index in range(gamepad.get_numaxes()):
+        axis_status = gamepad.get_axis(axis_index)
+        if (axis_status > GAMEPAD_ANALOG_THRESHOLD or
+                axis_status < -GAMEPAD_ANALOG_THRESHOLD) and axis_index < 2:
+            i = (axis_index * 2) + 1 if axis_status > 0 else (axis_index * 2)
+            inputs[input_index[i]] = abs(axis_status)
+            analog_used = True
+
+    if analog_used:
+        return False
+
+    # Check direction pads
+    for hat_index in range(gamepad.get_numhats()):
+        hat_status = gamepad.get_hat(hat_index)
+        inputs['l'] = 1.0 if hat_status[0] < -0.5 else 0
+        inputs['r'] = 1.0 if hat_status[0] > 0.5 else 0
+        inputs['u'] = 1.0 if hat_status[1] > 0.5 else 0
+        inputs['d'] = 1.0 if hat_status[1] < -0.5 else 0
+
+    return False
 
 
 def isButtonHit():

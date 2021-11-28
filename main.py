@@ -48,6 +48,8 @@ def gameInit():
     sceneMan = SceneManager()
     spawnMan = SpawnManager(sceneMan)
     audio.loadAudioFiles()
+    # Attemp to detect and init gamepad.
+    gInps.detectGamePad()
 
 
 # Handle transition between different game modes.
@@ -147,6 +149,7 @@ def gameLoop():
     global gameMode, LEDShowExplosion
 
     isDone = False
+    isBackToMenu = False
     getInputsTimer = pygame.time.get_ticks()
     LEDExplosionAnimTimer = pygame.time.get_ticks()
 
@@ -168,12 +171,18 @@ def gameLoop():
 
         keys = pygame.key.get_pressed()
         if keys[K_ESCAPE]:
-            if gameMode == GAMEPLAY or gameMode == GAMEOVER or \
-               gameMode == GAMERANK:
-                switchGameMode(GAMEMENU)
+            isBackToMenu = True
         elif gConf.INPUT_CONTROLLER == gConf.INPUT_KEYBOARD:
             # Read keyboard inputs.
             gInps.mapKeys(keys)
+        elif gConf.INPUT_CONTROLLER == gConf.INPUT_GAMEPAD:
+            # Read Gamepad inputs.
+            isBackToMenu = gInps.getGamepadInputs()
+
+        if isBackToMenu:
+            if gameMode == GAMEPLAY or gameMode == GAMEOVER or \
+               gameMode == GAMERANK:
+                switchGameMode(GAMEMENU)
 
         if gConf.INPUT_CONTROLLER == gConf.INPUT_SENSEHAT:
             if gameMode != GAMEPLAY:

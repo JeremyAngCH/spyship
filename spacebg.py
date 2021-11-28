@@ -29,7 +29,11 @@ class SpaceBG(GameObj):
                             ]
 
         mapW = (scrW // self.__spaceImg.get_width()) + 1
+        if mapW % self.__spaceImg.get_width() != 0:
+            mapW += 1
         mapH = (scrH // self.__spaceImg.get_height())
+        if mapH % self.__spaceImg.get_height() != 0:
+            mapH += 1
         self.__spaceImgMap = [[0 for x in range(mapW)] for y in range(mapH)]
         for y in range(mapH):
             curMap = self.__spaceImgMap[y]
