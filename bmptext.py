@@ -100,7 +100,7 @@ class BmpText(GameObj):
         self.updateTextPos()
 
     def setPos(self, x, y):
-        super(Explosion, self).setPos(x, y)
+        super(BmpText, self).setPos(x, y)
         self.updateTextPos()
 
     def update(self):
