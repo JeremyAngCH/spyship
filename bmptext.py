@@ -111,24 +111,24 @@ class BmpText(GameObj):
                 self.__blinkTimer = pygame.time.get_ticks()
 
     def render(self, surf):
-            if not self.__textLen:
-                return
-            startX = self.__textStartX
-            fntWidth = (bmpFontInfo[self.__fntType])[0] + \
-                       (bmpFontInfo[self.__fntType])[2]
-            for c in self.__text:
-                # Convert a character in the string to ASCII number
-                asc = ord(c)
-                if asc >= BMP_FONT_CHAR_MIN and asc <= BMP_FONT_CHAR_MAX:
-                    # Convert the ASCII number to ordinal which is used
-                    # to represent the position of bitmap character.
-                    # ASCII number 32 = 0 (1st bitmap character)
-                    # ASCII number 33 = 1 (2nd bitmap character)
-                    # and so on...
-                    asc -= BMP_FONT_CHAR_MIN
-                    surf.blit((BmpText.imgs[self.__fntType])[asc], (startX,
-                              self.y - (self.__textHeight // 2)))
-                    startX += fntWidth
+        if not self.__textLen:
+            return
+        startX = self.__textStartX
+        fntWidth = (bmpFontInfo[self.__fntType])[0] + \
+                   (bmpFontInfo[self.__fntType])[2]
+        for c in self.__text:
+            # Convert a character in the string to ASCII number
+            asc = ord(c)
+            if asc >= BMP_FONT_CHAR_MIN and asc <= BMP_FONT_CHAR_MAX:
+                # Convert the ASCII number to ordinal which is used
+                # to represent the position of bitmap character.
+                # ASCII number 32 = 0 (1st bitmap character)
+                # ASCII number 33 = 1 (2nd bitmap character)
+                # and so on...
+                asc -= BMP_FONT_CHAR_MIN
+                surf.blit((BmpText.imgs[self.__fntType])[asc], (int(startX),
+                          int(self.y - (self.__textHeight // 2))))
+                startX += fntWidth
 
     def getRect(self):
         return None

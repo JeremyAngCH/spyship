@@ -149,7 +149,6 @@ def gameLoop():
     global gameMode, LEDShowExplosion
 
     isDone = False
-    isBackToMenu = False
     getInputsTimer = pygame.time.get_ticks()
     LEDExplosionAnimTimer = pygame.time.get_ticks()
 
@@ -157,6 +156,8 @@ def gameLoop():
     switchGameMode(GAMEMENU)
     # Game loop start here
     while not isDone:
+        isBackToMenu = False
+
         clock.tick(gConf.GAMESPEED)
         spawnMan.spawnAsteroid()
 
